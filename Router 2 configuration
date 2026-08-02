@@ -1,0 +1,54 @@
+interface GigabitEthernet0/0
+ ip address 172.16.3.2 255.255.255.252
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/1
+ no ip address
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/1.10
+ encapsulation dot1Q 10
+ ip address 192.168.3.1 255.255.255.0
+ ip access-group vlan10_192.168.3.0/24 out
+!
+interface GigabitEthernet0/1.20
+ encapsulation dot1Q 20
+ ip address 192.168.2.1 255.255.255.0
+ ip access-group vlan20_192.168.2.0/24 out
+!
+interface GigabitEthernet0/1.30
+ encapsulation dot1Q 30
+ ip address 192.168.1.1 255.255.255.0
+ ip access-group vlan30_192.168.1.0/24 out
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+router ospf 1
+ log-adjacency-changes
+ network 172.16.3.0 0.0.0.3 area 0
+ network 192.168.3.0 0.0.0.255 area 0
+ network 192.168.2.0 0.0.0.255 area 0
+ network 192.168.1.0 0.0.0.255 area 0
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+ip access-list standard vlan30_192.168.1.0/24
+ permit host 172.16.1.1
+ permit host 172.16.2.1
+ deny any
+ip access-list standard vlan20_192.168.2.0/24
+ permit host 172.16.1.2
+ permit host 172.16.2.2
+ deny any
+ip access-list standard vlan10_192.168.3.0/24
+ deny host 172.16.2.1
+ deny host 172.16.2.2
+ permit host 172.16.1.1
+ permit host 172.16.1.2
