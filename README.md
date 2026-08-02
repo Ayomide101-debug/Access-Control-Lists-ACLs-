@@ -215,29 +215,6 @@ Through this project, I strengthened practical understanding of:
 
 More importantly, this project reinforced the value of systematic troubleshooting rather than relying on assumptions when diagnosing network failures.
 
-# Repository Contents
-
-├── PacketTracer/
-│   └── Enterprise_Network.pkt
-│
-├── Configurations/
-│   ├── R1.txt
-│   ├── R2.txt
-│   ├── SW1.txt
-│   └── SW2.txt
-│
-├── Topology/
-│   └── topology.png
-│
-├── Verification/
-│   ├── ospf-neighbor.png
-│   ├── routing-table.png
-│   ├── vlan-brief.png
-│   ├── trunk-status.png
-│   └── connectivity-tests.png
-│
-└── README.md
-
 # Author - **Ayomide Oyekunle**
 
 **Ayomide Oyekunle**
