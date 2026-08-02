@@ -40,7 +40,8 @@ The objective of this project was not only to achieve end-to-end connectivity bu
 
 # Network Topology
 
-> Insert network topology diagram here.
+<img width="893" height="543" alt="image" src="https://github.com/user-attachments/assets/cd29baef-9277-492f-903a-2b027b67013f" />
+
 
 # Network Architecture
 
