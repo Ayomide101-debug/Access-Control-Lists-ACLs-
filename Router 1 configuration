@@ -1,0 +1,36 @@
+interface GigabitEthernet0/0
+ ip address 172.16.1.254 255.255.255.0
+ ip access-group 2 out
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/1
+ ip address 172.16.3.1 255.255.255.252
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/2
+ ip address 172.16.2.254 255.255.255.0
+ ip access-group 1 out
+ duplex auto
+ speed auto
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+router ospf 1
+ log-adjacency-changes
+ network 172.16.3.0 0.0.0.3 area 0
+ network 172.16.2.0 0.0.0.255 area 0
+ network 172.16.1.0 0.0.0.255 area 0
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+access-list 1 deny 172.16.1.0 0.0.0.255
+access-list 1 permit any
+access-list 2 deny 172.16.2.0 0.0.0.255
+access-list 2 permit any
