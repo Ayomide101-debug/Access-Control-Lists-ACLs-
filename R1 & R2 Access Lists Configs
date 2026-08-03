@@ -1,0 +1,23 @@
+R1(config)#do show acce
+R1(config)#do show access-lists
+Standard IP access list 1
+    10 deny 172.16.1.0 0.0.0.255 (4 match(es))
+    20 permit any (72 match(es))
+Standard IP access list 2
+    10 deny 172.16.2.0 0.0.0.255 (12 match(es))
+    20 permit any (15 match(es))
+
+R2(config)#do show access-lists
+Standard IP access list vlan20_192.168.2.0/24
+    10 permit host 172.16.1.2
+    20 permit host 172.16.2.2
+    30 deny any
+Standard IP access list vlan10_192.168.3.0/24
+    10 deny host 172.16.2.1 (4 match(es))
+    20 deny host 172.16.2.2 (12 match(es))
+    30 permit host 172.16.1.1
+    40 permit host 172.16.1.2
+Standard IP access list vlan30_192.168.1.0/24
+    10 permit host 172.16.1.1 (4 match(es))
+    20 permit host 172.16.2.1 (4 match(es))
+    30 deny any (12 match(es))
